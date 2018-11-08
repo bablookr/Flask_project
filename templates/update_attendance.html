@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../static/login.css" type="text/css" />
+<link rel="stylesheet" href="../static/styles_faculty_login.css" type="text/css" />
+
+<title>IIT BHU Portal</title>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+</head>
+<body>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+          	</div>
+                
+        </div>
+            
+
+	</div>
+     
+    <div id="content">
+
+				<h2>Update Attendance </h2> 
+                <h4>Here is the list of students you selected :-</h4>
+				<br> <br>
+				
+				<form action=''>
+				
+					<table style='text-align:center ; margin-left:300px ; color:black'>
+					
+						<tr>
+							<td style='padding-right:200px'> Roll Number </td>
+							<td> Attendance </td>
+						</tr> <br>
+						
+						{% for i in list %}
+						
+							<tr>
+								<td style='padding-right:0px'> <input type='text' class='login-input' style='height:40px ; width:220px' value={{i}} readonly='readonly'/> </td>
+								<td> <input type='text' class='login-input' value={{i}} style='height:40px ; width:220px ; margin-left:-100px'/> </td>
+							</tr> <br>
+						
+						{% endfor %}
+					
+					</table>
+					<br> <br>
+					<input type='submit' class='dropdown' style='width:200px ; margin-left:400px' value='Submit'/>
+					
+				</form> <br> <br>
+												
+    </div> 
+		
+</div>
+	 
+</body>
+</html>

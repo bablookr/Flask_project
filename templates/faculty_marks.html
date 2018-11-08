@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../static/add_new_course.css" type="text/css" />
+
+<title>IIT BHU Portal</title>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</head>
+<script>
+	function formvalidation()
+	{
+		var c=0;
+		var test_name=$('#test_name').val();
+		if(test_name=='Select Test/Assignment')
+		{
+			c=1;
+		}
+		else if($('#roll_start').val()=='Select Roll No.')
+		{
+			c=1;
+		}
+		else if($('#roll_end').val()=='Select Roll No.')
+		{
+			c=1;
+		}
+		if(c==1)
+		{
+			return false;
+		}
+	}
+</script>
+<script>
+	function endroll()
+	{
+		var x = document.getElementById("roll_end");
+		var y = $('#roll_start').val();
+		while(x.length>1)
+		{
+			x.remove(1);
+		}
+		var option;
+		{% for i in students %}
+		{
+			if({{ i.0 }}>=y)
+			{
+				option = document.createElement("option");
+				option.text={{ i.0 }};
+				x.add(option, x[x.length]);
+			}
+		}
+		{% endfor %}
+	}
+</script>
+<body>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+          	</div>
+                
+        </div>
+            
+
+	</div>
+     
+    <div id="content">
+
+				<h2>Update Marks </h2> 
+                <h4>Filter data :-</h4>
+				<br> <br>
+				
+				<form action='/fac_insert_marks' method='POST' onsubmit='return formvalidation()'>
+				
+					<div id='exp'> 
+						<p style='color:black ; float:left ; font-size:20px '> Select exam/test/assignment       :       </p> 
+
+						<select id='test_name' class='dropdown' style='width:200px' name='test'>
+							<option>Select Test/Assignment</option>
+							{% for i in course_col %}
+								<option value={{ i.2 }}>{{ i.2 }}</option>
+							{% endfor %}
+				
+						</select>
+					</div>
+					
+					<br> <br>
+					
+					<div id='exp' style='text-align:left ; margin-left:00px'>
+					
+						<p style='color:black ; float:left ; font-size:20px '> Starting Roll No.       :       </p> 
+						
+						<select id='roll_start' class='dropdown' style='margin-left:100px ; width:200px ; float:left' name='start' onchange='endroll()'>
+							<option>Select Roll No.</option>
+							{% for i in students %}
+								<option value={{i.0}}>{{i.0}}</option>
+							{% endfor %}
+				
+						</select>
+						
+						<p style='margin-left:50px ; color:black ; font-size:20px ; float:left'> Ending Roll No. : </p>
+						
+						<select id='roll_end' class='dropdown' style='margin-left:100px ; width:200px ; float:left' name='end'>
+							<option>Select Roll No.</option>
+							
+				
+						</select>
+						
+					</div>
+						
+					<input type='hidden' name='link' value={{ course.0.1 }} />	
+					
+					<input type='submit' class='dropdown' value='Submit' style='width:200px ; margin-left:400px ; margin-top:40px' /> <br>
+					
+				</form>
+				
+				<form action='/fac_add_marks'>
+				<input type='hidden' value={{ course.0.2 }} name='course' />
+				<input type='submit' value='Your requirement was not found ? Add new Test' class='dropdown' />
+				</form>
+    </div> 
+		
+</div>
+	 
+</body>
+</html>

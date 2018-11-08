@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IIT BHU Portal</title>
+
+<link rel="stylesheet" href="../static/reset_pass.css" type="text/css" />
+<link rel="stylesheet" href="../static/styles_reset_pass.css" type="text/css" />
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	function validateForm() 
+	{
+		var x = document.forms["form"]["pass"].value;
+		var y = document.forms["form"]["re_pass"].value;
+		if (x != y)
+		{
+			$("#error").html("Passwords don't match");
+			return false;
+		}
+		else if (x.length<6 || x.length>20)
+		{
+			$("#error").html("Password must be between 6-20 letters");
+			return false;
+		}
+		else if(/\W/.test(x))
+		{
+			$("#error").html("Password must be Alphanumeric only");
+			return false;
+		}
+	}
+</script>
+<body>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+
+            	</div>
+                
+            </div>
+            
+
+	</div>
+	<form action="/pass_set_t" name='form' class="login" method='POST' onsubmit='return validateForm()'>
+		<h1>IIT BHU Portal Password Reset</h1>
+		<input type='hidden' name='mailid' value={{ mailid }}>
+		<input type="password" name="pass" class="login-input" placeholder="Password" required='required' autofocus />
+		<input type="password" name="re_pass" class="login-input" placeholder="Re-enter Password" required='required' />
+		<p style='color:black; font-size:18px' id='error'> </p>
+		<input type="submit" value="Submit" class="login-submit">
+    </form>
+
+</div>
+</body>
+</html>

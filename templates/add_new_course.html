@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../static/add_new_course.css" type="text/css" />
+<title>IIT BHU Portal</title>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body>
+<script>
+function Function1(){
+	document.getElementById("p21").style.visibility="visible";
+	document.getElementById("p22").style.visibility="visible";
+	document.getElementById("sel21").style.visibility="visible";
+	document.getElementById("sel22").style.visibility="visible";
+}
+function Function2(){
+	document.getElementById("p31").style.visibility="visible";
+	document.getElementById("p32").style.visibility="visible";
+	document.getElementById("sel31").style.visibility="visible";
+	document.getElementById("sel32").style.visibility="visible";
+}
+</script>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+          	</div>
+                
+        </div>
+            
+
+	</div>
+     
+    <div id="content">
+
+				<h2>Add New Course </h2> 
+                <h4>Please fill the below details :-</h4>
+				<br> <br>
+				
+				<form action="/ins" method="POST">
+				
+					<div id='exp'> 
+						<p style='color:black ; float:left ; font-size:20px '> Course Code       :       </p> 
+
+						<select name="course" class='dropdown' style='width:200px'>
+						
+							{% for i in course %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+					</div>
+					
+					<br> <br>
+					
+					<div id='exp' style='text-align:left ; margin-left:00px'>
+					
+						<p style='color:black ; float:left ; font-size:20px '> Department       :       </p>
+						
+						<select name="dept1" class='dropdown' style='margin-left:100px ; width:200px ; float:left ' required=False>
+				
+							<option> Select Dept. </option>
+
+							{% for i in depts %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+						
+						<p style='margin-left:50px ; color:black ; font-size:20px ; float:left'> Year : </p>
+						
+						<select name="year1" class='dropdown' onchange="Function1()" style='margin-left:100px ; width:200px ; float:left;'>
+
+							<option> Select Year </option>
+
+							{% for i in years %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+
+						</select>
+						
+					</div>
+
+					<div id='exp' style='text-align:left ; margin-left:00px'>
+					
+						<p id="p21" style='color:black ; float:left ; font-size:20px; visibility:hidden  '> Department       :       </p>
+						
+						<select name="dept2" id="sel21" class='dropdown' style='margin-left:100px ; width:200px ; float:left; visibility:hidden'>
+				
+							<option> Select Dept. </option>
+
+							{% for i in depts %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+						
+						<p id="p22" style='margin-left:50px ; color:black ; font-size:20px ; float:left; visibility:hidden'> Year : </p>
+						
+						<select name="year2" id="sel22" class='dropdown' onchange="Function2()" style='margin-left:100px ; width:200px ; float:left; visibility:hidden'>
+				
+							<option> Select Year </option>
+
+							{% for i in years %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+						
+					</div>
+
+					<div id='exp' style='text-align:left ; margin-left:00px'>
+					
+						<p id="p31" style='color:black ; float:left ; font-size:20px; visibility:hidden '> Department       :       </p>
+						
+						<select name="dept3" id="sel31" class='dropdown' style='margin-left:100px ; width:200px ; float:left; visibility:hidden'>
+				
+							<option> Select Dept. </option>
+
+							{% for i in depts %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+						
+						<p id="p32" style='margin-left:50px ; color:black ; font-size:20px ; float:left; visibility:hidden'> Year : </p>
+						
+						<select name="year3" id="sel32" class='dropdown' style='margin-left:100px ; width:200px ; float:left; visibility:hidden'>
+				
+							<option> Select Year </option>
+
+							{% for i in years %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+						
+					</div>
+
+					<input type='submit' class='dropdown' value='Submit' style='width:200px ; margin-left:400px ; margin-top:40px' />
+				</form> <br> <br>
+				
+    </div> 
+		
+</div>
+</body>
+</html>

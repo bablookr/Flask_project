@@ -1,0 +1,21 @@
+create database assignment;
+use assignment
+create table s_login(roll varchar(10) PRIMARY KEY,s_name varchar(36) NOT NULL,s_email varchar(100) NOT NULL,branch varchar(40) NOT NULL,year tinyint NOT NULL,s_pass char(32) NOT NULL,active tinyint NOT NULL);
+create table t_login(empid varchar(10) PRIMARY KEY,e_name varchar(40) NOT NULL,e_email varchar(100) NOT NULL,dept varchar(40) NOT NULL,e_pass char(32) NOT NULL);
+create table course(course_id varchar(10) PRIMARY KEY,course_name varchar(100) NOT NULL UNIQUE);
+create table subject(sno int PRIMARY KEY AUTO_INCREMENT,link int NOT NULL,course_id varchar(10) NOT NULL,empid varchar(10) NOT NULL,active tinyint NOT NULL default 0);
+create table subdata(link int NOT NULL,roll varchar(10) NOT NULL,m_col_1 float ,m_col_2 float ,m_col_3 float ,m_col_4 float ,m_col_5 float ,m_col_6 float ,m_col_7 float ,m_col_8 float ,m_col_9 float ,m_col_10 float ,m_col_11 float ,m_col_12 float ,a_col_1 int ,a_col_2 int ,a_col_3 int ,a_col_4 int ,a_col_5 int ,a_col_6 int ,a_col_7 int ,a_col_8 int );
+create table marks(link int NOT NULL,col_no int NOT NULL,col_name varchar(25) NOT NULL,max int,weightage float);
+create table attendance(link int NOT NULL,col_no int NOT NULL,col_name varchar(25) NOT NULL,max int);
+alter table subdata add constraint unique (link,roll);
+alter table marks add PRIMARY KEY (link,col_no);
+alter table marks add UNIQUE (link,col_name);
+alter table attendance add PRIMARY KEY (link,col_no);
+alter table attendance add UNIQUE (link,col_name);
+alter table subdata add FOREIGN KEY (link) references subject (sno);
+alter table marks add FOREIGN KEY (link) references subject (sno);
+alter table attendance add FOREIGN KEY (link) references subject (sno);
+alter table subject add FOREIGN KEY (empid) references t_login (empid);
+alter table subdata add FOREIGN KEY (roll) references s_login (roll);
+alter table subject add FOREIGN KEY (course_id) references course(course_id);
+alter table t_login add column active tinyint default 0 NOT NULL;

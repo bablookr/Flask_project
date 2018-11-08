@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../static/add_new_course.css" type="text/css" />
+
+<title>IIT BHU Portal</title>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+</head>
+<body>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+          	</div>
+                
+        </div>
+            
+
+	</div>
+     
+    <div id="content">
+
+				<h2>Update Attendance </h2> 
+                <h4>Filter data :-</h4>
+				<br> <br>
+				
+				<form action='teacher_login.html'>
+				
+					<div id='exp'> 
+						<p style='color:black ; float:left ; font-size:20px '> Select Month       :       </p> 
+
+						<select class='dropdown' style='width:200px'>
+				
+							{% for i in courses %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+					</div>
+					
+					<br> <br>
+					
+					<div id='exp' style='text-align:left ; margin-left:00px'>
+					
+						<p style='color:black ; float:left ; font-size:20px '> Starting Roll No.       :       </p> 
+						
+						<select class='dropdown' style='margin-left:100px ; width:200px ; float:left'>
+				
+							{% for i in courses %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+						
+						<p style='margin-left:50px ; color:black ; font-size:20px ; float:left'> Ending Roll No. : </p>
+						
+						<select class='dropdown' style='margin-left:100px ; width:200px ; float:left'>
+				
+							{% for i in courses %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+				
+						</select>
+						
+					</div>
+
+					<input type='submit' class='dropdown' value='Submit' style='width:200px ; margin-left:400px ; margin-top:40px' /> <br>
+					
+					<a href=''> Your requirement was not found ? Add new Month </a>
+
+				</form> <br> <br>
+				
+    </div> 
+		
+</div>
+	 
+</body>
+</html>

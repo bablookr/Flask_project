@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../static/login.css" type="text/css" />
+<link rel="stylesheet" href="../static/styles_faculty_login.css" type="text/css" />
+
+<title>IIT BHU Portal</title>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+</head>
+<body>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+          	</div>
+                
+        </div>
+            
+
+	</div>
+     
+    <div id="content">
+
+				<h2>Add new entry </h2> 
+                <h4>Please fill the below mentioned options :-</h4>
+				<br> <br>
+				
+				<form action='/fac_add_attendance' method='POST'>
+					<input type='hidden' value={{ course.0.1 }} name='link' />
+					<input type='hidden' value={{ column_data|length + 1 }} name='col' /> 
+					<input type='text' class='login-input' name='name' placeholder='Name of Entry' required='required' autofocus style='width:300px ; margin-left:330px ; height:40px'/> <br>
+					<input type='text' class='login-input' name='max_attendance' placeholder='Maximum Attendance' style='width:300px ; margin-left:330px ; height:40px'/> <br>
+					<br> <br>
+					<input type='submit' class='dropdown' value='Submit' style='width:200px ; margin-left:380px' />
+					
+				</form> <br> <br>
+												
+    </div> 
+		
+</div>
+	 
+</body>
+</html>

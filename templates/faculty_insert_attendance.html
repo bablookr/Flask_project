@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../static/login.css" type="text/css" />
+<link rel="stylesheet" href="../static/styles_faculty_login.css" type="text/css" />
+
+<title>IIT BHU Portal</title>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+</head>
+<body>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+          	</div>
+                
+        </div>
+            
+
+	</div>
+     
+    <div id="content">
+
+				<h3>Update Attendance - {{ attendance }} </h3> 
+                <h4>Here is the list of students you selected :-</h4>
+				<br> <br>
+				
+				<form action='/fac_update_attendance' method='POST'>
+				
+
+					<table style='text-align:center ; margin-left:170px ; color:black'>
+					
+						<tr>
+							<th>Roll No.</th>
+							<th>Name</th>
+							<th>Attendance</th>
+						</tr> <br>
+						
+						{% for i in attendance_data %}
+							<tr>
+								<td> <input type='text' class='login-input' style='width:220px' value={{ i.0 }}  readonly='readonly'/> </td>
+								<td> <input type='text' class='login-input' style='width:220px' value={{ i.2 }}  readonly='readonly'/> </td>
+								<td> <input type='text' class='login-input' value={{ i.1 }} name={{ i.0 }} style='width:220px'/> </td>
+							</tr> <br>
+							
+						{% endfor %}
+						
+						<input type='hidden' name='link' value={{ link }} />
+						<input type='hidden' name='attendance' value={{ attendance }} />
+						
+					</table>
+					<br> <br>
+					<input type='submit' class='dropdown' style='width:200px ; margin-left:400px' value='Submit'/>
+					
+				</form> <br> <br>
+												
+    </div> 
+		
+</div>
+	 
+</body>
+</html>

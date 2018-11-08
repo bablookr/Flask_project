@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IIT BHU Portal</title>
+
+<link rel="stylesheet" href="../static/reg_faculty.css" type="text/css" />
+<link rel="stylesheet" href="../static/styles_reg_faculty.css" type="text/css" />
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+</head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<script>
+	$(function() {
+		var submit_form = function() {
+		$.getJSON($SCRIPT_ROOT + '/sup_disp_t', {
+			empid : $('input[name="emp_id"]').val()
+			
+			}, function(data){
+				var sup_text='';
+				if(data.sup_t_dispdata.length==0)
+				{
+					$('#sup_error').text('Enter Correct Emp. ID');
+				}
+				else
+				{
+					sup_text=sup_text+'<input type="text" class="login-input" value="'+data.sup_t_dispdata[0][1]+'">';
+					sup_text=sup_text+'<input type="text" class="login-input" value="'+data.sup_t_dispdata[0][2]+'">';
+					sup_text=sup_text+'<input type="text" class="login-input" value="'+data.sup_t_dispdata[0][3]+'">';
+					sup_text=sup_text+'<input type="submit" value="Submit" class="login-submit">';
+					sup_text=sup_text+'<a href="#" id="form_reset">Enter Another Emp. ID</a>';
+					$('#sup_data').html(sup_text);
+					$('#sup_error').html('');
+					$('.login-input').attr("readonly", true);
+				}
+			});
+			return false;
+		};
+	$('#sup_data').on('click', '#form_submit' ,submit_form);
+	$('input[type=text]').bind('keydown', function(e) {
+		if(e.keycode == 13)
+		{
+			submit_form(e);
+		}
+	});	
+	});
+</script>
+<script>
+	$(function() {
+	$('.login-input').keydown(function (e) {
+	if (e.keyCode == 13) {
+		e.preventDefault();
+	}
+	});
+	});
+</script>
+<script>
+	$(function() {
+		$('#sup_data').on('click', 'a', function() {
+			$('#sup_data').html('<input id="form_submit" type="button" value="Submit" class="login-submit" />');
+			$('#sup_error').html('');
+			$('.login-input').attr("readonly", false);
+			return false;
+		});
+	});
+</script>
+<body>
+<div id="container">
+
+    <header> 
+
+	<div class="clear"></div>
+       
+    </header>
+
+
+    <div id="intro">
+
+		<div class="width">
+      
+			<div class="intro-content">
+	
+                    <h2>IIT BHU Academic Portal </h2>
+                                  	                    
+
+            	</div>
+                
+            </div>
+            
+
+	</div>
+	<form action="/sup_comp_t" class="login" method='POST'>
+		<h1>IIT BHU Portal Faculty Registration</h1>
+		<input type="text" name="emp_id" class="login-input" placeholder="Employee ID" required='required' autofocus />
+		<div id='sup_error'></div>
+		<div id='sup_data'><input type="button" id='form_submit' value="Register" class="login-submit"></div>
+    </form>
+
+</div>
+</body>
+</html>
